@@ -3,11 +3,17 @@
 {% block title %}Modification d'Article{% endblock %}
 
 {% block body %}
+<div class="container-fluid">
     <h1>Modification d'Article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Modifier'}) }}
+<div class="mb-2">
+    {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+</div>
 
-    <a href="{{ path('app_article_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('app_article_index') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retour à la liste</a>
 
     {{ include('article/_delete_form.html.twig') }}
+
+</div>
 {% endblock %}
