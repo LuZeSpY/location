@@ -49,3 +49,5 @@ class Article
         return $this;
     }
 }
+
+?>

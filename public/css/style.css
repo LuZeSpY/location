@@ -1,3 +1,7 @@
 * {
     background-color: inherit;
 }
+
+.navbar-brand img {
+    width: 250px;
+}

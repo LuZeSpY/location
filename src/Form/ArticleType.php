@@ -24,3 +24,5 @@ class ArticleType extends AbstractType
         ]);
     }
 }
+
+?>
