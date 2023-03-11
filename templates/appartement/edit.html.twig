@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Modification des informations de l'appartement n°{{ appartement.id }}</h1>
+
+<div class="mb-2">
+    {{ include('appartement/_form.html.twig', {'button_label': 'Update'}) }}
+</div>
+
+    <a href="{{ path('app_appartement_index') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retour à la liste</a>
+
+    {{ include('appartement/_delete_form.html.twig') }}
+
+</div>
+{% endblock %}

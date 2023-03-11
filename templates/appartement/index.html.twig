@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des appartements{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Liste des appartements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Complement</th>
+                <th>Ville</th>
+                <th>Code_postal</th>
+                <th>Prix_charges</th>
+                <th>Prix_loyer</th>
+                <th>Superficie</th>
+                <th>Prix_depot_garantie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appartement in appartements %}
+            <tr>
+                <td>{{ appartement.id }}</td>
+                <td>{{ appartement.adresse }}</td>
+                <td>{{ appartement.complement }}</td>
+                <td>{{ appartement.ville }}</td>
+                <td>{{ appartement.codePostal }}</td>
+                <td>{{ appartement.prixCharges }}€</td>
+                <td>{{ appartement.prixLoyer }}€</td>
+                <td>{{ appartement.superficie }}m²</td>
+                <td>{{ appartement.prixDepotGarantie }}€</td>
+                <td style="width: 15%;">
+                    <a href="{{ path('app_appartement_show', {'id': appartement.id}) }}" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir</a>
+                    <a href="{{ path('app_appartement_edit', {'id': appartement.id}) }}" class="btn btn-success"><i class="fa-solid fa-pencil"></i> Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appartement_new') }}" class="btn btn-primary "><i class="fa-sharp fa-regular fa-plus"></i> Ajouter un nouvel appartement</a>
+    <a href="{{ path('app_accueil') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retourner à l'accueil</a>
+</div>
+{% endblock %}

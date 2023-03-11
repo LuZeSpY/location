@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un nouvel appartement{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Ajout d'un nouvel appartement</h1>
+
+    <div class="form mb-2">
+    {{ include('appartement/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('app_appartement_index') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartement{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Appartement n° {{ appartement.id }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ appartement.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Complement</th>
+                <td>{{ appartement.complement }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ appartement.ville }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ appartement.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Prix_charges</th>
+                {% if appartement.prixCharges > 0 %}
+                <td>{{ appartement.prixCharges }}€/mois</td>
+                
+                {% else %}
+                <td>Pas de charges sur cet appartement</td>                
+
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Prix_loyer</th>
+                <td>{{ appartement.prixLoyer }}€/mois</td>
+            </tr>
+            <tr>
+                <th>Superficie</th>
+                <td>{{ appartement.superficie }}m²</td>
+            </tr>
+            <tr>
+                <th>Prix_depot_garantie</th>
+                <td>{{ appartement.prixDepotGarantie }}€</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appartement_index') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retour à la liste</a>
+
+    <a href="{{ path('app_appartement_edit', {'id': appartement.id}) }}" class="btn btn-success"><i class="fa-solid fa-pencil"></i> Editer</a>
+
+    {{ include('appartement/_delete_form.html.twig') }}
+
+</div>
+{% endblock %}
