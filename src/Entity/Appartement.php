@@ -37,6 +37,10 @@ class Appartement
     #[ORM\Column]
     private ?float $prix_depot_garantie = null;
 
+    #[ORM\ManyToOne(inversedBy: 'appartements')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Agence $agence = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +138,18 @@ class Appartement
     public function setPrixDepotGarantie(float $prix_depot_garantie): self
     {
         $this->prix_depot_garantie = $prix_depot_garantie;
+
+        return $this;
+    }
+
+    public function getAgence(): ?Agence
+    {
+        return $this->agence;
+    }
+
+    public function setAgence(?Agence $agence): self
+    {
+        $this->agence = $agence;
 
         return $this;
     }

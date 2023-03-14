@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Appartement;
+use App\Entity\Agence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class AppartementType extends AbstractType
 {
@@ -20,6 +24,17 @@ class AppartementType extends AbstractType
             ->add('prix_loyer')
             ->add('superficie')
             ->add('prix_depot_garantie')
+            ->add('agence', EntityType::class, [
+                'required' => true,
+                'label' => 'Choisir une agence',
+                'class' => Agence::class,
+                'choice_label' => 'nom_agence',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez choisir une agence'
+                    ])
+                ]
+            ])
         ;
     }
 

@@ -4,49 +4,42 @@
 
 {% block body %}
 <div class="container-fluid">
-    <h1>Liste des appartements</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Adresse</th>
-                <th>Complement</th>
-                <th>Ville</th>
-                <th>Code_postal</th>
-                <th>Prix_charges</th>
-                <th>Prix_loyer</th>
-                <th>Superficie</th>
-                <th>Prix_depot_garantie</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="d-inline-flex">
+        <h1>Liste des appartements</h1>
+        <a id="add" href="{{ path('app_appartement_new') }}" class="btn btn-success align-self-center mx-2"><i class="fa-sharp fa-regular fa-plus"></i></a>
+    </div>
+    <div class="row azer mt-4 justify-content-center">
         {% for appartement in appartements %}
-            <tr>
-                <td>{{ appartement.id }}</td>
-                <td>{{ appartement.adresse }}</td>
-                <td>{{ appartement.complement }}</td>
-                <td>{{ appartement.ville }}</td>
-                <td>{{ appartement.codePostal }}</td>
-                <td>{{ appartement.prixCharges }}€</td>
-                <td>{{ appartement.prixLoyer }}€</td>
-                <td>{{ appartement.superficie }}m²</td>
-                <td>{{ appartement.prixDepotGarantie }}€</td>
-                <td style="width: 15%;">
-                    <a href="{{ path('app_appartement_show', {'id': appartement.id}) }}" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir</a>
-                    <a href="{{ path('app_appartement_edit', {'id': appartement.id}) }}" class="btn btn-success"><i class="fa-solid fa-pencil"></i> Editer</a>
-                </td>
-            </tr>
+            <div class="col col-lg-3 col-md-3 col-sm-4 d-flex flex-wrap justify-content-center zqsd">
+                <div class="">
+                    <div class="text-center">
+                        <span class="agence_light">Exclusivité</span>
+                        <span class="agence_bold">Agence {{appartement.agence_id}}</span>
+                        <p class="loyer">Appartement n°{{appartement.id}}</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <img src="https://v.seloger.com/s/crop/250x250/visuels/1/p/j/4/1pj4gn6jy46ksumanuhkc7cjszouem6bnml0vt3sw.jpg" class="">
+                </div>
+                <div class="">
+                    <div class="text-center">
+                    <br />
+                        <p class="loyer">{{appartement.prixLoyer}} €/mois</p>
+                    </div>
+                    <div class="text-center">2 pièces<span class=""> ● </span>1 chambre<span class=""> ● </span>36 m²
+                    </div>
+                    <p class="text-center"><i class="fa-solid fa-location-dot"></i> {{appartement.ville}} ({{appartement.codePostal}})</p>
+                    <p class="text-center">Montant du dépôt de garantie : {{appartement.prixDepotGarantie}}€</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('app_appartement_show', {'id': appartement.id}) }}" class="btn btn-primary mx-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir</a>
+                        <a href="{{ path('app_appartement_edit', {'id': appartement.id}) }}" class="btn btn-success mx-1"><i class="fa-solid fa-pencil"></i> Editer</a>
+                    </div>
+                </div>
+            </div>
         {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
+                <p>Walou</p>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_appartement_new') }}" class="btn btn-primary "><i class="fa-sharp fa-regular fa-plus"></i> Ajouter un nouvel appartement</a>
-    <a href="{{ path('app_accueil') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retourner à l'accueil</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

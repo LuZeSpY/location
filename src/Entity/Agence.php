@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AgenceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AgenceRepository::class)]
@@ -18,6 +20,14 @@ class Agence
 
     #[ORM\Column]
     private ?float $taux_frais = null;
+
+    #[ORM\OneToMany(mappedBy: 'agence', targetEntity: Appartement::class, orphanRemoval: true)]
+    private Collection $appartements;
+
+    public function __construct()
+    {
+        $this->appartements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +54,36 @@ class Agence
     public function setTauxFrais(float $taux_frais): self
     {
         $this->taux_frais = $taux_frais;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Appartement>
+     */
+    public function getAppartements(): Collection
+    {
+        return $this->appartements;
+    }
+
+    public function addAppartement(Appartement $appartement): self
+    {
+        if (!$this->appartements->contains($appartement)) {
+            $this->appartements->add($appartement);
+            $appartement->setAgence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppartement(Appartement $appartement): self
+    {
+        if ($this->appartements->removeElement($appartement)) {
+            // set the owning side to null (unless already changed)
+            if ($appartement->getAgence() === $this) {
+                $appartement->setAgence(null);
+            }
+        }
 
         return $this;
     }
