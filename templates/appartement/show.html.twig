@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container-fluid">
-    <h1>Appartement n° {{ appartement.id }}</h1>
+    <h1>Appartement {{ appartement.id }}</h1>
 
     <table class="table">
         <tbody>
@@ -45,6 +45,10 @@
             <tr>
                 <th>Prix_depot_garantie</th>
                 <td>{{ appartement.prixDepotGarantie }}€</td>
+            </tr>
+            <tr>
+                <th>Agence associée</th>
+                <td>{{ appartement.agence.nomAgence }}</td>
             </tr>
         </tbody>
     </table>

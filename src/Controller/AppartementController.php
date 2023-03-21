@@ -20,7 +20,7 @@ class AppartementController extends AbstractController
     {
         return $this->render('appartement/index.html.twig', [
             'appartements' => $appartementRepository->findAll(),
-            'agence' => $agenceRepository->findAll(),
+            'agences' => $agenceRepository->findAll(),
         ]);
     }
 

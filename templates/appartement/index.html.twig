@@ -11,11 +11,11 @@
     <div class="row azer mt-4 justify-content-center">
         {% for appartement in appartements %}
             <div class="col col-lg-3 col-md-3 col-sm-4 d-flex flex-wrap justify-content-center zqsd">
-                <div class="">
+                <div>
                     <div class="text-center">
                         <span class="agence_light">Exclusivité</span>
-                        <span class="agence_bold">Agence {{appartement.agence_id}}</span>
-                        <p class="loyer">Appartement n°{{appartement.id}}</p>
+                        <span class="agence_bold">Agence {{appartement.agence.nomAgence}}</span>
+                        <p class="loyer">Appartement ID n°{{appartement.id}}</p>
                     </div>
                 </div>
                 <div class="text-center">
@@ -26,7 +26,7 @@
                     <br />
                         <p class="loyer">{{appartement.prixLoyer}} €/mois</p>
                     </div>
-                    <div class="text-center">2 pièces<span class=""> ● </span>1 chambre<span class=""> ● </span>36 m²
+                    <div class="text-center">2 pièces<span> ● </span>1 chambre<span> ● </span>36 m²
                     </div>
                     <p class="text-center"><i class="fa-solid fa-location-dot"></i> {{appartement.ville}} ({{appartement.codePostal}})</p>
                     <p class="text-center">Montant du dépôt de garantie : {{appartement.prixDepotGarantie}}€</p>
