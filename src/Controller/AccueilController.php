@@ -27,10 +27,16 @@ class AccueilController extends AbstractController
         ->getQuery()
         ->getSingleScalarResult();
 
+        $totalAppartementLoue = $appartementRepository->createQueryBuilder('a')
+        ->select('count(a.locataire)')
+        ->getQuery()
+        ->getSingleScalarResult();
+
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'appartementTotal' => $totalAppartement,
             'locataireTotal' => $totalLocataire,
+            'appartementLoue' => $totalAppartementLoue,
         ]);
     }
 
