@@ -4,9 +4,15 @@
 
 {% block body %}
 <div class="container-fluid">
-    <div class="d-inline-flex">
-        <h1>Liste des appartements</h1>
-        <a id="add" href="{{ path('app_appartement_new') }}" class="btn btn-success align-self-center mx-2"><i class="fa-sharp fa-regular fa-plus"></i></a>
+    <div class="row">
+        <div class="col-md-12 d-flex align-items-center justify-content-between">
+            <div>
+                <h1>Liste des appartements</h1>
+            </div>
+            <div>
+                <a id="add" href="{{ path('app_appartement_new') }}" class="btn btn-success align-self-center mx-2"><i class="fa-sharp fa-regular fa-plus"></i></a>
+            </div>
+        </div>
     </div>
     <div class="row azer mt-4 justify-content-center">
         {% for appartement in appartements %}
