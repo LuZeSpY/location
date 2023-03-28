@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locataire index{% endblock %}
+
+{% block body %}
+<link href="{{ asset('css/locataire.css') }}" rel="stylesheet"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body d-inline-flex align-items-center justify-content-between">
+                    <div>
+                        <h5 class="card-title text-center text-uppercase mb-0">Gestion des locataires</h5>
+                    </div>
+                    <div>
+                        <a id="add" href="{{ path('app_locataire_new') }}" class="btn btn-success align-self-center mx-2"><i class="fa-sharp fa-regular fa-plus"></i></a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap user-table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Nom</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Prenom</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Telephone</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Adresse</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Complement</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Code_postal</th>
+                            <th scope="col" class="border-0 text-uppercase font-medium">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for locataire in locataires %}
+                        <tr>
+                            <td>{{ locataire.nom }}</td>
+                            <td>{{ locataire.prenom }}</td>
+                            <td>{{ locataire.email }}</td>
+                            <td>{{ locataire.telephone }}</td>
+                            <td>{{ locataire.adresse }}</td>
+                            <td>{{ locataire.complement }}</td>
+                            <td>{{ locataire.ville }}</td>
+                            <td>{{ locataire.codePostal }}</td>
+                            <td>
+                                <a href="{{ path('app_locataire_show', {'id': locataire.id}) }}">Voir</a>
+                                <a href="{{ path('app_locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">no records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

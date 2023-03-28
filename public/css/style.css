@@ -43,10 +43,11 @@ img {
 
 .connected {
     position: fixed;
-    background-color: #F8F9FA;
+    background-color: transparent;
     top: 0;
-    right: 0;
+    right: 50%;
     margin: 10px;
     font-size: 0.75em;
+    color: #fff;
     z-index: 9999;
 }
