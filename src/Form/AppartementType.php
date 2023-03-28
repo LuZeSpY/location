@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Appartement;
 use App\Entity\Agence;
+use App\Entity\Locataire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,6 +35,12 @@ class AppartementType extends AbstractType
                         'message' => 'Veuillez choisir une agence'
                     ])
                 ]
+            ])
+            ->add('locataire', EntityType::class, [
+                'required' => false,
+                'label' => 'Associer à un locataire',
+                'class' => Locataire::class,
+                'choice_label' => 'fullname'
             ])
         ;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LocataireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LocataireRepository::class)]
@@ -36,6 +38,14 @@ class Locataire
 
     #[ORM\Column(length: 255)]
     private ?string $code_postal = null;
+
+    #[ORM\OneToMany(mappedBy: 'locataire', targetEntity: Appartement::class)]
+    private Collection $appartement;
+
+    public function __construct()
+    {
+        $this->appartement = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,5 +146,39 @@ class Locataire
         $this->code_postal = $code_postal;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Appartement>
+     */
+    public function getAppartement(): Collection
+    {
+        return $this->appartement;
+    }
+
+    public function addAppartement(Appartement $appartement): self
+    {
+        if (!$this->appartement->contains($appartement)) {
+            $this->appartement->add($appartement);
+            $appartement->setLocataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppartement(Appartement $appartement): self
+    {
+        if ($this->appartement->removeElement($appartement)) {
+            // set the owning side to null (unless already changed)
+            if ($appartement->getLocataire() === $this) {
+                $appartement->setLocataire(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFullname(): ?string {
+        return $this->nom . ' ' . $this->prenom;
     }
 }

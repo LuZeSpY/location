@@ -41,6 +41,9 @@ class Appartement
     #[ORM\JoinColumn(nullable: false)]
     private ?Agence $agence = null;
 
+    #[ORM\ManyToOne(inversedBy: 'appartement')]
+    private ?Locataire $locataire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Appartement
     public function setAgence(?Agence $agence): self
     {
         $this->agence = $agence;
+
+        return $this;
+    }
+
+    public function getLocataire(): ?Locataire
+    {
+        return $this->locataire;
+    }
+
+    public function setLocataire(?Locataire $locataire): self
+    {
+        $this->locataire = $locataire;
 
         return $this;
     }

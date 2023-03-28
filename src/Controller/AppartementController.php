@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Appartement;
 use App\Entity\Agence;
+use App\Entity\Locataire;
 use App\Form\AppartementType;
 use App\Repository\AppartementRepository;
+use App\Repository\LocataireRepository;
 use App\Repository\AgenceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,11 +18,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppartementController extends AbstractController
 {
     #[Route('/', name: 'app_appartement_index', methods: ['GET'])]
-    public function index(AppartementRepository $appartementRepository, AgenceRepository $agenceRepository): Response
+    public function index(AppartementRepository $appartementRepository, AgenceRepository $agenceRepository, LocataireRepository $locataireRepository): Response
     {
         return $this->render('appartement/index.html.twig', [
             'appartements' => $appartementRepository->findAll(),
             'agences' => $agenceRepository->findAll(),
+            'locataire' => $locataireRepository->findAll(),
         ]);
     }
 
