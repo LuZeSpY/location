@@ -40,3 +40,13 @@ img {
 .agence_bold {
     font-weight: 600;
 }
+
+.connected {
+    position: fixed;
+    background-color: #F8F9FA;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-size: 0.75em;
+    z-index: 9999;
+}

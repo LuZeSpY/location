@@ -1,8 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'baselogin.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
 
+
+
 {% block body %}
+<link href="{{ asset('css/form_design.css') }}" rel="stylesheet"/>
+
+{#
+
 <div class="container-fluid d-flex justify-content-center mt-4">
     <form style="width:50%;" method="post">
         {% if error %}
@@ -36,6 +42,8 @@
             </div>
         #}
 
+        {#
+
         <button class="btn btn-lg btn-primary mt-4" type="submit">
             Sign in
         </button>
@@ -44,4 +52,82 @@
         </a>
     </form>
 </div>
+
+#}
+
+{#  LOGIN FORM TEST  #}
+
+	<div class="section mt-4">
+		<div class="container">
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                <i class="fa-solid fa-circle-dot" style="color: #61c45a;"></i> Vous êtes connecté {{ app.user.userIdentifier }}.
+            </div>
+        {% endif %}
+        <form action="{{ path('app_login') }}" method="post">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Connexion </span><span>Inscription</span></h6>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+			          	<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Se connecter</h4>
+											<div class="form-group">
+                                                <i class="fa-solid fa-at"></i>
+												{# <input type="email" name="logemail" class="form-style"  id="logemail" autocomplete="off"> #}
+                                                <input type="email" value="{{ last_username }}" name="email" class="form-style" id="inputEmail" autocomplete="email" placeholder="Votre Email">
+											</div>	
+											<div class="form-group mt-2">
+                                                <i class="fa-solid fa-lock"></i>
+												{# <input type="password" name="logpass" class="form-style"  id="logpass" autocomplete="off"> #}
+                                                <input type="password" name="password" id="inputPassword" placeholder="Votre Mot de Passe" class="form-style" autocomplete="current-password" required>
+
+                                                <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+											</div>
+											{# <button href="#" class="btn mt-4">Connexion</button> #}
+                                            <button class="btn btn-lg mt-4" type="submit">Connexion</button>
+                            				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Mot de passe oublié ?</a></p>
+				      					</div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">S'inscrire</h4>
+											<div class="form-group d-flex">
+                                                <i class="fa-solid fa-user"></i>
+												<input type="text" name="logname" class="form-style" placeholder="Votre Nom" id="logname" autocomplete="off">
+											</div>	
+											<div class="form-group mt-2">
+                                                <i class="fa-solid fa-at"></i>
+												<input type="email" name="logemail" class="form-style" placeholder="Votre Email" id="logemail" autocomplete="off">
+											</div>	
+											<div class="form-group mt-2">
+                                                <i class="fa-solid fa-lock"></i>
+												<input type="password" name="logpass" class="form-style" placeholder="Votre Mot de Passe" id="logpass" autocomplete="off">
+											</div>
+											<a href="#" class="btn mt-4">Inscription</a>
+				      					</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+        </form>
+	    </div>
+	</div>
+
 {% endblock %}
+
