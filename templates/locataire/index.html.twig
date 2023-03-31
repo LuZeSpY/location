@@ -5,7 +5,7 @@
 {% block body %}
 <link href="{{ asset('css/locataire.css') }}" rel="stylesheet"/>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -21,12 +21,11 @@
                     <table class="table no-wrap user-table mb-0">
                     <thead>
                         <tr>
+                            <th scope="col" class="border-0 text-uppercase font-medium">Référence</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Nom</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Prenom</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Telephone</th>
-                            <th scope="col" class="border-0 text-uppercase font-medium">Adresse</th>
-                            <th scope="col" class="border-0 text-uppercase font-medium">Complement</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Ville</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">Code_postal</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">actions</th>
@@ -35,17 +34,16 @@
                     <tbody>
                         {% for locataire in locataires %}
                         <tr>
+                            <td>{{ locataire.id }}</td>
                             <td>{{ locataire.nom }}</td>
                             <td>{{ locataire.prenom }}</td>
                             <td>{{ locataire.email }}</td>
                             <td>{{ locataire.telephone }}</td>
-                            <td>{{ locataire.adresse }}</td>
-                            <td>{{ locataire.complement }}</td>
                             <td>{{ locataire.ville }}</td>
                             <td>{{ locataire.codePostal }}</td>
                             <td>
-                                <a href="{{ path('app_locataire_show', {'id': locataire.id}) }}">Voir</a>
-                                <a href="{{ path('app_locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+                                <a href="{{ path('app_locataire_show', {'id': locataire.id}) }}" class="btn btn-primary mx-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> Voir</a>
+                                <a href="{{ path('app_locataire_edit', {'id': locataire.id}) }}" class="btn btn-success mx-1"><i class="fa-solid fa-pencil"></i> Editer</a>
                             </td>
                         </tr>
                         {% else %}

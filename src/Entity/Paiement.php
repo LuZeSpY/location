@@ -20,6 +20,12 @@ class Paiement
     #[ORM\Column]
     private ?float $montant = null;
 
+    #[ORM\ManyToOne(inversedBy: 'paiements')]
+    private ?Locataire $locataire = null;
+
+    #[ORM\ManyToOne(inversedBy: 'paiements')]
+    private ?Appartement $appartement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +51,30 @@ class Paiement
     public function setMontant(float $montant): self
     {
         $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getLocataire(): ?Locataire
+    {
+        return $this->locataire;
+    }
+
+    public function setLocataire(?Locataire $locataire): self
+    {
+        $this->locataire = $locataire;
+
+        return $this;
+    }
+
+    public function getAppartement(): ?Appartement
+    {
+        return $this->appartement;
+    }
+
+    public function setAppartement(?Appartement $appartement): self
+    {
+        $this->appartement = $appartement;
 
         return $this;
     }
