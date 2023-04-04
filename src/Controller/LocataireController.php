@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Locataire;
 use App\Form\LocataireType;
 use App\Repository\LocataireRepository;
+use App\Repository\PaiementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class LocataireController extends AbstractController
 {
     #[Route('/', name: 'app_locataire_index', methods: ['GET'])]
-    public function index(LocataireRepository $locataireRepository): Response
+    public function index(LocataireRepository $locataireRepository, PaiementRepository $paiementRepository): Response
     {
+        
+        $totalPaiement = $paiementRepository->createQueryBuilder('a')
+        ->select('count(a.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+
+
+
         return $this->render('locataire/index.html.twig', [
             'locataires' => $locataireRepository->findAll(),
+            'paiementTotal' => $totalPaiement,
         ]);
     }
 

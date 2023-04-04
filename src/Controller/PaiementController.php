@@ -20,10 +20,17 @@ class PaiementController extends AbstractController
     #[Route('/', name: 'app_paiement_index', methods: ['GET'])]
     public function index(PaiementRepository $paiementRepository, AppartementRepository $appartementRepository, LocataireRepository $locataireRepository): Response
     {
+        $totalPaiement = $paiementRepository->createQueryBuilder('a')
+        ->select('sum(a.montant)')
+        ->getQuery()
+        ->getSingleScalarResult();
+
+
         return $this->render('paiement/index.html.twig', [
             'paiements' => $paiementRepository->findAll(),
             'locataire' => $locataireRepository->findAll(),
             'appartements' => $appartementRepository->findAll(),
+            'paiementTotal' => $totalPaiement
         ]);
     }
 
@@ -47,10 +54,11 @@ class PaiementController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_paiement_show', methods: ['GET'])]
-    public function show(Paiement $paiement): Response
+    public function show(Paiement $paiement, Locataire $locataire): Response
     {
         return $this->render('paiement/show.html.twig', [
             'paiement' => $paiement,
+            'locataire' => $locataireRepository->findAll(),
         ]);
     }
 
