@@ -24,7 +24,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: 572e0472-e7be-4450-a5ab-fa8ddee11a67
+          project-id: 61e3afda-c531-4f24-89fb-2fb4bf182b94
           action: retrieve-info
 
 
@@ -53,6 +53,6 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: 572e0472-e7be-4450-a5ab-fa8ddee11a67
+          project-id: 61e3afda-c531-4f24-89fb-2fb4bf182b94
           branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
           action: dispatch-deployments
