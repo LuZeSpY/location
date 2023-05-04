@@ -12,3 +12,4 @@ Deploy the application in local environment :
 
 You'll need to setup the DB config.
 The Application runs with PGSQL.
+In order to have the save database as mine, you'll need to download the database.sql (available in the file) then restore your PostgreSQL application with this file.
