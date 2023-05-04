@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EtatLieux{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Créer un nouvel état des lieux</h1>
+
+<div class="form mb-2">
+    {{ include('etat_lieux/_form.html.twig') }}
+  </div>
+
+    <a href="{{ path('app_etat_lieux_index') }}" class="btn btn-outline-light"><i class="fa-solid fa-left-long"></i> Retour à la liste</a>
+{% endblock %}

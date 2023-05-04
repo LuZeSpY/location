@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EtatLieux index{% endblock %}
+
+{% block body %}
+    <h1>EtatLieux index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_etat_lieux</th>
+                <th>Remarque</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat_lieux in etat_lieuxes %}
+            <tr>
+                <td>{{ etat_lieux.id }}</td>
+                <td>{{ etat_lieux.dateEtatLieux ? etat_lieux.dateEtatLieux|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ etat_lieux.remarque }}</td>
+                <td>
+                    <a href="{{ path('app_etat_lieux_show', {'id': etat_lieux.id}) }}">show</a>
+                    <a href="{{ path('app_etat_lieux_edit', {'id': etat_lieux.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etat_lieux_new') }}">Create new</a>
+{% endblock %}

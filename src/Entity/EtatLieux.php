@@ -20,6 +20,9 @@ class EtatLieux
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $remarque = null;
 
+    #[ORM\ManyToOne(inversedBy: 'etatLieux')]
+    private ?Appartement $appartement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class EtatLieux
     public function setRemarque(?string $remarque): self
     {
         $this->remarque = $remarque;
+
+        return $this;
+    }
+
+    public function getAppartement(): ?Appartement
+    {
+        return $this->appartement;
+    }
+
+    public function setAppartement(?Appartement $appartement): self
+    {
+        $this->appartement = $appartement;
 
         return $this;
     }
