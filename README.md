@@ -5,8 +5,10 @@ Accès au Trello de gestion de projet : https://trello.com/invite/b/GZz39skP/ATT
 
 Deploy the application in local environment :
 1. Do git clone https://github.com/LuZeSpY/location.git 
-2. Run composer install in order to install the project's dependencies into vendor/
-3. Run symfony server:start to display the application on http://localhost:8000/
+2. Do cd/my-project or cd/location
+3. Run composer install in order to install the project's dependencies into vendor/
+4. Run npm install and run npm run build
+4. Run symfony server:start to display the application on http://localhost:8000/
 
 You'll need to setup the DB config.
 The Application runs with PGSQL.
