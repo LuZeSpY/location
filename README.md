@@ -13,6 +13,6 @@ PHP Version : >=8.2.5
 
 You'll need to setup the DB config.
 The Application runs with PGSQL.
-In order to have the same database as mine, you'll need to download the database.sql (available in the file) then restore your PostgreSQL application with this file.
-
-If restoring the database doesn't work, we can create empty tables with this query available in tables.sql
+In order to have the same database as mine, you'll need to download the database.sql (available in the file) then restore your PostgreSQL application with this file with Query Tool.
+You'll have this result : 
+![tables](https://github.com/LuZeSpY/location/assets/58334358/8c39b715-42d1-4af0-9d4f-35b704beb969)
